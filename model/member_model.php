@@ -8,17 +8,27 @@ class member_model extends Database {
   }
 
   function getMemberById($id){
-    $this->where(Array(
+    $this->setWhere(Array(
       "user_id" => $id
     ));
     $member = $this->select(MEMBER);
     return array_pop($member);
   }
 
-  function getMemberByName(){
+  function getMemberByName($name){
+    $this->setWhere(Array(
+      "user_name" => $name
+    ));
+    $member = $this->select(MEMBER);
+    return array_pop($member);
   }
 
-  function getMemberBySeq(){
+  function getMemberBySeq($seq){
+    $this->setWhere(Array(
+      "idx" => $seq
+    ));
+    $member = $this->select(MEMBER);
+    return array_pop($member);
   }
 }
 

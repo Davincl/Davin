@@ -44,7 +44,7 @@ class Database extends Common{
   public function setField($array){
     $field = "";
     for($i = 1 ; $i < count($array); $i++){
-      $field .= $array[$i] . ($i != count($array) ? ", " : "" )
+      $field .= $array[$i] . ($i != count($array) ? ", " : "" );
     }
     if($field != ""){
       $this->field = $field;

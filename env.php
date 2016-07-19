@@ -42,7 +42,8 @@ function classload($path, $core){
 *******************************************************************************************************/
 // Default define
 define("MODE", "dev");
-define("URI", ($_SERVER['REQUEST_URI'] != "/") ? str_replace(INDEX, "", $_SERVER['REQUEST_URI']) : null);
+define("INDEX", (strpos($_SERVER["REQUEST_URI"], "DA") ? "DA" : "" ));
+define("URI", ($_SERVER['REQUEST_URI'] != "/") ? str_replace("/" . INDEX, "", $_SERVER['REQUEST_URI']) : null);
 
 // File Define
 define("C_DEF", "Main");
@@ -56,9 +57,9 @@ define("PREFIX_MODEL", "_model");
 define("DS", "/");
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]);
 define("LIB", ROOT . DS . "lib");
-define("C_PATH", ROOT . DS . "controll");
+define("C_PATH", ROOT . DS . "controll" . (INDEX == "DA" ? DS . "DA" : "" ));
 define("M_PATH", ROOT . DS . "model");
-define("V_PATH", ROOT . DS . "view");
+define("V_PATH", ROOT . DS . "view" . (INDEX == "DA" ? DS . "DA" : "" ));
 define("F_PATH", ROOT . DS . "upload");
 define("L_PATH", ROOT . DS . "language");
 define("LANG", "kor");
