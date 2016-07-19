@@ -1,12 +1,21 @@
 <?php
-class Main {
+if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct script access allowed');}
 
-  function __remap(){
-    echo "remap";
+class Main extends Common{
+
+  public function __remap($path){
+    if(method_exists($this, "header")){
+      $this->header($path);
+    }
+    $this->$path["fun"]();
+    if(method_exists($this,"footer")){
+      $this->footer($path);
+    }
   }
 
-  function index(){
-    echo "indexs";
+  public function index(){
+    $member = $this->model("member");
+    $member = $member->getMemberById('admin');
   }
 }
 ?>

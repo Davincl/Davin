@@ -1,7 +1,5 @@
 <?php
-include_once (__DIR__ . "/env.php");
-include_once (LIB . "/Davin.php");
-
-$DA = new Davin();
+include_once(dirname(__FILE__) . "/env.php");
+include_once(LIB . "/class.davin.php");
 
 ?>
