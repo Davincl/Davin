@@ -14,8 +14,7 @@ class Main extends Common{
   }
 
   public function index(){
-    $member = $this->model("member");
-    $member = $member->getMemberById('admin');
+    echo "USER";
   }
 }
 ?>

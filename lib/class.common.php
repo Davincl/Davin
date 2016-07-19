@@ -26,6 +26,7 @@ class Common {
   }
 
   public function alert($msg = "", $url = ""){
+
     echo "<script type='text/javascript'>";
     if($msg != ""){
       echo "alert('" . $msg . "');";

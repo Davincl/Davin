@@ -14,7 +14,6 @@ $DA->DB = classload(LIB . DS . "class.db.php", "Database");
 $DA->Menu = classload(LIB . DS . "class.menu.php", "Menu");
 // Access Check Class
 $DA->Access = classload(LIB . DS . "class.access.php", "Access");
-$DA->Access->loginCheck($DA->Menu->getMenuLevel());
 
 // URI System Class
 $DA->Router = classload(LIB . DS . "class.router.php", "Router");

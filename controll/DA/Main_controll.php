@@ -1,8 +1,11 @@
 <?php
 if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct script access allowed');}
 
-class Main extends Common{
-
+class Main extends Common {
+  function __construct(){
+    global $DA;
+    $DA->Access->loginCheck();
+  }
   public function __remap($path){
     if(method_exists($this, "header")){
       $this->header($path);
@@ -13,7 +16,7 @@ class Main extends Common{
     }
   }
   public function index(){
-    echo "ADMIM";
+    $this->view("main");
   }
 }
 ?>

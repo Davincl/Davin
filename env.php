@@ -78,6 +78,9 @@ define("MENU", "menu");
 define("BOARD", "board");
 define("SITE", "site");
 
+// location
+define("ADMIN_LOGIN", "/DA/login/form");
+
 
 
 ?>
