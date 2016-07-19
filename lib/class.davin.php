@@ -1,26 +1,24 @@
 <?php
 if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct script access allowed');}
 
-
-if(file_exists(LIB . "/class.common.php")){
-    include_once(LIB . "/class.common.php");
+if(file_exists(LIB . DS . "class.common.php")){
+    include_once(LIB . DS . "class.common.php");
 }
 
 $DA = (Object) array();
-$DA->Common = classload(LIB . "/class.common.php", "Common");
-$DA->Router = classload(LIB . "/class.router.php", "Router");
-$DA->DB = classload(LIB . "/class.db.php", "Database");
+// Default Common Class
+$DA->Common = classload(LIB . DS . "class.common.php", "Common");
+// Database Class
+$DA->DB = classload(LIB . DS . "class.db.php", "Database");
+// Menu Class
+$DA->Menu = classload(LIB . DS . "class.menu.php", "Menu");
+// Access Check Class
+$DA->Access = classload(LIB . DS . "class.access.php", "Access");
+$DA->Access->loginCheck($DA->Menu->getMenuLevel());
+
+// URI System Class
+$DA->Router = classload(LIB . DS . "class.router.php", "Router");
+
 
 $DA->Router->setPathSource();
-// // Default lib
-// $core = Array("Menu", "Member", "Information");
-// $system = Array();
-// for($i = 0 ; $i < count($core) ; $i++){
-//   if(file_exists(LIB . "/class." . $core[$i] . "." . EXT)){
-//     include_once(LIB . "/class." . $core[$i] . "." . EXT);
-//     // $newClass = new $core[$i]();
-//     // $system[$core[$i]] = $newClass;
-//   }
-// }
-
 ?>

@@ -12,7 +12,6 @@ class Main extends Common{
       $this->footer($path);
     }
   }
-
   public function index(){
     echo "ADMIM";
   }
