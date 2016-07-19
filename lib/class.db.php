@@ -30,6 +30,27 @@ class Database extends Common{
     }
   }
 
+  public function setWhere($array){
+    $where = "";
+    $i = 1 ;
+    foreach($array as $key => $val){
+      $where .= " $key = '$val' " . ($i != count($array) ? " AND " : "" );
+    }
+    if($where != ""){
+      $this->where = " WHERE " . $where;
+    }
+  }
+
+  public function setField($array){
+    $field = "";
+    for($i = 1 ; $i < count($array); $i++){
+      $field .= $array[$i] . ($i != count($array) ? ", " : "" )
+    }
+    if($field != ""){
+      $this->field = $field;
+    }
+  }
+
   public function select($table){
     $sqlString = "";
     if($this->field != ""){
@@ -46,14 +67,37 @@ class Database extends Common{
     return $rtn;
   }
 
-  public function where($array){
-    $where = "";
-    $i = 1 ;
-    foreach($array as $key => $val){
-      $where .= " $key = '$val' " . ($i != count($array) ? " AND " : "" );
+  public function update($table, $array){
+    if(count($array) == 0){
+      $this->error(502);
+      exit;
+    }else{
+      $sqlString = " UPDATE $table SET ";
+      $i = 1;
+      foreach($array as $key => $val){
+        $sqlString .= " $key = '$val' " . ($i != count($array) ? ", " : "" );
+      }
+      $sqlString .= $this->where;
+      return $this->execute($sqlString);
     }
-    if($where != ""){
-      $this->where = " WHERE " . $where;
+  }
+
+  public function delete($table){
+    $sqlString = "DELETE FROM $table " . $this->where;
+    return $this->execute($sqlString);
+  }
+
+  public function insert($table, $array){
+    if(count($array) == 0){
+      $this->error(502);
+      exit;
+    }else{
+      $sqlString = "INSERT INTO $table SET ";
+      $i = 1;
+      foreach($array as $key => $val){
+        $sqlString .= " $key = '$val' " . ($i != count($array) ? ", " : "" );
+      }
+      return $this->execute($sqlString);
     }
   }
 
