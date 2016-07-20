@@ -43,18 +43,26 @@ class Database extends Common{
 
   public function setField($array){
     $field = "";
-    for($i = 1 ; $i < count($array); $i++){
-      $field .= $array[$i] . ($i != count($array) ? ", " : "" );
+    for($i = 0 ; $i < count($array); $i++){
+      $field .= $array[$i] . ($i != (count($array) - 1) ? ", " : "" );
     }
     if($field != ""){
       $this->field = $field;
     }
   }
 
-  public function select($table){
+  public function setLimit($start, $end){
+    
+  }
+
+  public function select($table = ""){
     $sqlString = "";
     if($this->field != ""){
-      $sqlString = "SELECT " . $this->field . " FROM $table";
+      if($table == ""){
+        $sqlString = "SELECT " . $this->field ;
+      }else{
+        $sqlString = "SELECT " . $this->field . " FROM $table";
+      }
     }
     if($this->where != ""){
       $sqlString .= $this->where;
@@ -99,6 +107,12 @@ class Database extends Common{
       }
       return $this->execute($sqlString);
     }
+  }
+
+  public function getPassword($pw){
+    $this->setField(Array(" password('$pw') as PWD "));
+    $row = array_pop($this->select());
+    return $row["PWD"];
   }
 
 }

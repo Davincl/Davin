@@ -30,6 +30,15 @@ class member_model extends Database {
     $member = $this->select(MEMBER);
     return array_pop($member);
   }
+
+  function getMemberbyLogin($id, $pw){
+    $this->setWhere(Array(
+      "user_id" => $seq,
+      "user_pw" => $this->getPwass($pw)
+    ));
+    $member = $this->select(MEMBER);
+    return array_pop($member);
+  }
 }
 
 ?>

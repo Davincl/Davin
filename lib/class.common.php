@@ -134,6 +134,5 @@ class Common {
       return $newClass;
     }
   }
-
 }
 ?>

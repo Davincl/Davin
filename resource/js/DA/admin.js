@@ -1,14 +1,8 @@
 $(function(){
-  $("#loginForm").find("input").on("keydown", function (event){
-    $("#alertMsg").removeClass("alert alert-danger").html('');
-  });
-  $("#loginForm").find("select").on("change", function (event){
-    $("#alertMsg").removeClass("alert alert-danger").html('');
-  });
   $("#loginForm").submit(function (event){
     event.preventDefault();
     $.ajax({
-      url: "/member/loginAction",
+      url: "/DA/login/loginAction",
       dataType: "json",
       type: "POST",
       data: $("#loginForm").serialize()
