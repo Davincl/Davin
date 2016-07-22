@@ -33,8 +33,8 @@ class member_model extends Database {
 
   function getMemberbyLogin($id, $pw){
     $this->setWhere(Array(
-      "user_id" => $seq,
-      "user_pw" => $this->getPwass($pw)
+      "user_id" => $id,
+      "user_pwd" => $this->getPassword($pw)
     ));
     $member = $this->select(MEMBER);
     return array_pop($member);

@@ -17,8 +17,16 @@
     <h3> Admin Login </h3>
     <form id="loginForm">
       <div class="form-group input-group-lg">
-        <input type="text" class="form-control" placeholder="ID : "  name="user_id">
+        <input type="text" class="form-control" placeholder="ID : " name="user_id">
+        <h4 aria-label="Left Align" class="hidden pull-left" id="id_alert">
+          <span class="label label-danger">ERROR</span>
+          Please enter your ID.
+        </h4>
         <input type="password" class="form-control" placeholder="PASSWORD : " name="user_pw">
+        <h4 aria-label="Left Align" class="hidden pull-left" id="pw_alert">
+          <span class="label label-danger">ERROR</span>
+          Please enter your Password.
+        </h4>
       </div>
       <div id="alertMsg" role="alert"></div>
       <input type="submit" class="btn btn-lg" value="로그인" placeholder="로그인"/>

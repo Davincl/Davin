@@ -2,7 +2,7 @@
 if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct script access allowed');}
 
 class Database extends Common{
-  var $conn, $table, $where = "", $field = "*", $result;
+  var $conn, $table, $where = "", $field = "*", $limit = "", $result;
   function __construct(){
     $this->conn = mysql_connect(DB_HOST, DB_USER, DB_PWD);
     if(!$this->conn){
@@ -21,6 +21,14 @@ class Database extends Common{
   function __destruct(){
   }
 
+  public function _reset(){
+    $this->table = "";
+    $this->where = "";
+    $this->field = "*";
+    $this->limit = "";
+    mysql_free_result($this->result);
+  }
+
   public function execute($sqlString = ""){
     $this->result = mysql_query($sqlString, $this->conn);
     if(!$this->result){
@@ -35,6 +43,7 @@ class Database extends Common{
     $i = 1 ;
     foreach($array as $key => $val){
       $where .= " $key = '$val' " . ($i != count($array) ? " AND " : "" );
+      $i++;
     }
     if($where != ""){
       $this->where = " WHERE " . $where;
@@ -51,8 +60,12 @@ class Database extends Common{
     }
   }
 
-  public function setLimit($start, $end){
-    
+  public function setLimit($count, $start = ""){
+    if($start != ""){
+      $this->limit = " LIMIT $start, $count";
+    }else{
+      $this->limit = " LIMIT $count";
+    }
   }
 
   public function select($table = ""){
@@ -67,11 +80,16 @@ class Database extends Common{
     if($this->where != ""){
       $sqlString .= $this->where;
     }
+    if($this->limit != ""){
+      $sqlString .= $this->limit;
+    }
+
     $this->result = $this->execute($sqlString);
     $rtn = Array();
     while($row = mysql_fetch_array($this->result, MYSQL_ASSOC)){
       $rtn[] = $row;
     }
+    $this->_reset();
     return $rtn;
   }
 
@@ -84,6 +102,7 @@ class Database extends Common{
       $i = 1;
       foreach($array as $key => $val){
         $sqlString .= " $key = '$val' " . ($i != count($array) ? ", " : "" );
+        $i++;
       }
       $sqlString .= $this->where;
       return $this->execute($sqlString);
@@ -104,6 +123,7 @@ class Database extends Common{
       $i = 1;
       foreach($array as $key => $val){
         $sqlString .= " $key = '$val' " . ($i != count($array) ? ", " : "" );
+        $i++;
       }
       return $this->execute($sqlString);
     }

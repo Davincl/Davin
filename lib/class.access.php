@@ -4,7 +4,6 @@ if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct
 class Access extends Common {
   public $accType, $model, $user;
   function __construct(){
-    $this->language();
     if(!empty(INDEX)){
       $accType = "ADMIN";
     }else{

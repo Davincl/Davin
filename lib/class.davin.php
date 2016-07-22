@@ -5,6 +5,13 @@ if(file_exists(LIB . DS . "class.common.php")){
     include_once(LIB . DS . "class.common.php");
 }
 
+if(file_exists(L_PATH . DS . LANG . "_message.php")){
+  include_once L_PATH . DS . LANG . "_message.php";
+}else{
+  echo "No Search Language File!!";
+  exit;
+}
+
 $DA = (Object) array();
 // Default Common Class
 $DA->Common = classload(LIB . DS . "class.common.php", "Common");

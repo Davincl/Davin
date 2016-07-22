@@ -5,6 +5,11 @@ class Common {
 
   public $MESSAGE;
 
+  function __construct(){
+    global $LANG;
+    $this->MESSAGE = $LANG;
+  }
+
   public function view($viewName, $data = []){
     if(file_exists(V_PATH . DS . $viewName . PREFIX_VIEW . '.' . V_EXT)){
       include(V_PATH . DS . $viewName . PREFIX_VIEW . '.' . V_EXT);
@@ -102,19 +107,7 @@ class Common {
     return $ciphertext_dec;
   }
 
-  public function language(){
-
-    if(file_exists(L_PATH . DS . LANG . "_message.php")){
-      include_once L_PATH . DS . LANG . "_message.php";
-      $this->MESSAGE = $LANG;
-
-    }else{
-      echo "No Search Language File!!";
-    }
-  }
-
   public function error($errCode, $msg = ""){
-    $this->language();
     if(!empty($this->MESSAGE["ERR_" . $errCode])){
       echo $this->MESSAGE["ERR_" . $errCode];
     }else{

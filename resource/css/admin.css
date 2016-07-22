@@ -1,2 +1,4 @@
 div.loginBox {width:550px; margin:200px auto; padding:10px 5px; text-align:center;}
 div.loginBox h3 { padding-bottom:15px;}
+div.loginBox h4 { width:100%; text-align:left;}
+div.loginBox input { margin: 5px 0px 5px 0px;}

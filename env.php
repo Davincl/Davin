@@ -67,7 +67,7 @@ define("LANG", "kor");
 // DB define
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
-define("DB_NAME", "IoE");
+define("DB_NAME", "Home");
 define("DB_PWD", "SmartHKMySQL2014");
 define("DB_PORT", "3306");
 define("DB_CHARSET", "utf8");
