@@ -6,12 +6,16 @@ class Login extends Common {
   function __construct(){
     parent::__construct();
     $this->member = $this->model("member");
-
   }
   public function form(){
+    global $DA;
+    $DA->Access->loginFormCheck();
     $this->view("loginForm");
   }
-
+  public function logout(){
+    session_unset();
+    $this->alert($this->MESSAGE["LOGOUT_DONE"], ADMIN_LOGIN);
+  }
   public function loginAction(){
     $id = $this->getPOST("user_id");
     $pw = $this->getPOST("user_pw");

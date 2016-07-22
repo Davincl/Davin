@@ -18,6 +18,7 @@ class Router {
 
   private function getSystem(){
     $FILE = C_PATH . DS . $this->PATH["class"] . PREFIX_CON . "." .  EXT;
+
     if(file_exists($FILE)){
       include_once $FILE;
     }else {
@@ -27,8 +28,10 @@ class Router {
 
     $object = new $this->PATH["class"]();
     if(method_exists($object, "__remap")){
+
       call_user_func_array(array($object, "__remap"), array($this->PATH));
     }else{
+
       call_user_func(array($object, $this->PATH["fun"]));
     }
   }

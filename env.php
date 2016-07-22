@@ -41,8 +41,9 @@ function classload($path, $core){
  * Parameters
 *******************************************************************************************************/
 // Default define
+define("SYSTEM_NAME", "DA");
 define("MODE", "dev");
-define("INDEX", (strpos($_SERVER["REQUEST_URI"], "DA") ? "DA" : "" ));
+define("INDEX", (strpos($_SERVER["REQUEST_URI"], SYSTEM_NAME) ? SYSTEM_NAME : "" ));
 define("URI", ($_SERVER['REQUEST_URI'] != "/") ? str_replace("/" . INDEX, "", $_SERVER['REQUEST_URI']) : null);
 
 // File Define
@@ -57,9 +58,9 @@ define("PREFIX_MODEL", "_model");
 define("DS", "/");
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]);
 define("LIB", ROOT . DS . "lib");
-define("C_PATH", ROOT . DS . "controll" . (INDEX == "DA" ? DS . "DA" : "" ));
+define("C_PATH", ROOT . DS . "controll" . (INDEX == SYSTEM_NAME ? DS . SYSTEM_NAME : "" ));
 define("M_PATH", ROOT . DS . "model");
-define("V_PATH", ROOT . DS . "view" . (INDEX == "DA" ? DS . "DA" : "" ));
+define("V_PATH", ROOT . DS . "view" . (INDEX == SYSTEM_NAME ? DS . SYSTEM_NAME : "" ));
 define("F_PATH", ROOT . DS . "upload");
 define("L_PATH", ROOT . DS . "language");
 define("LANG", "kor");
@@ -79,8 +80,6 @@ define("BOARD", "board");
 define("SITE", "site");
 
 // location
-define("ADMIN_LOGIN", "/DA/login/form");
-
-
+define("ADMIN_LOGIN", "/" . SYSTEM_NAME . "/login/form");
 
 ?>

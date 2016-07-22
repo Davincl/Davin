@@ -23,9 +23,6 @@ class Main extends Common {
   public function header(){
     $this->view("header");
   }
-  public function left(){
-    $this->view("left");
-  }
   public function index(){
     $this->view("main");
   }

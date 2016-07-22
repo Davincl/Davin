@@ -21,7 +21,7 @@ class Common {
 
   public function model($modelName){
     if(file_exists(M_PATH . DS . $modelName . PREFIX_MODEL . '.' . EXT)){
-      include(M_PATH . DS . $modelName .  PREFIX_MODEL . '.' . EXT);
+      include_once(M_PATH . DS . $modelName .  PREFIX_MODEL . '.' . EXT);
       $modelClass = $modelName . PREFIX_MODEL;
       return new $modelClass();
     }else{

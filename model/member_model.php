@@ -40,5 +40,3 @@ class member_model extends Database {
     return array_pop($member);
   }
 }
-
-?>

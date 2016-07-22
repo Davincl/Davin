@@ -10,6 +10,7 @@ class Access extends Common {
     }else{
       $accType = "USER";
     }
+
     if(!empty($_SESSION["user_id"])){
       $this->model = $this->model("member");
       $this->user = $this->model->getMemberById($_SESSION["user_id"]);
@@ -21,6 +22,11 @@ class Access extends Common {
   public function loginCheck(){
     if($this->user["user_level"] == 0){
       $this->alert($this->MESSAGE["LOGIN_MSG"], ADMIN_LOGIN);
+    }
+  }
+  public function loginFormCheck(){
+    if($this->user["user_level"] != 0){
+      $this->alert("", "/" . SYSTEM_NAME);
     }
   }
 }
