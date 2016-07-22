@@ -6,19 +6,74 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>Home</title>
-<link type="text/css" href="/resource/css/admin_style.css" rel="stylesheet" />
 <link type="text/css" href="/resource/css/bootstrap.min.css" rel="stylesheet" />
+<link type="text/css" href="/resource/css/admin_style.css" rel="stylesheet" />
 <script type="text/javascript" src="/resource/js/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="/resource/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="/resource/js/DA/main.js"></script>
 </head>
 <body>
-  <div class="dropdown">
-    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown trigger
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-      
-    </ul>
-  </div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">DA CRM</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Dashboard</a></li>
+          <!--
+           표기 사항
+           - 통계 원 차트 3개
+           - 최근 게시물 (-7)
+           - 최근 가입자 (-7)
+          -->
+          <li><a href="#">Site</a></li>
+          <!--
+            하위 메뉴
+            - 기본 환경 설정
+            - 약관 설정
+          -->
+          <li><a href="#">Board</a></li>
+          <!--
+            하위 메뉴
+             - 게시판 리스트
+             - 게시판 권한 관리
+          -->
+          <li><a href="#">Member</a></li>
+          <!--
+            하위 메뉴
+            - 회원 리스트
+            - 회원 등급
+            - 회원 그룹
+            - 삭제 회원 리스트
+          -->
+          <li><a href="#">Etc</a></li>
+          <!--
+            하위 메뉴
+            - 팝업 관리
+            - 메뉴 관리
+              - 사용자 메뉴
+              - 권리자 메뉴
+            - 방문자 통계
+              - 총 방문자 통계
+              - 페이지 뷰 통계
+              - 게시판 통계
+              - 재방문 통계
+          -->
+          <li><a href="#">Help</a></li>
+          <!--
+            CRM 사용설명서
+          -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container-fluid" style="margin-top:50px;">
+      <div class="row">

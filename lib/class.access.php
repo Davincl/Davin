@@ -4,13 +4,14 @@ if(realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)){ exit('No direct
 class Access extends Common {
   public $accType, $model, $user;
   function __construct(){
+    parent::__construct();
     if(!empty(INDEX)){
       $accType = "ADMIN";
     }else{
       $accType = "USER";
     }
     if(!empty($_SESSION["user_id"])){
-      $this->model = $this->model(MEMBER);
+      $this->model = $this->model("member");
       $this->user = $this->model->getMemberById($_SESSION["user_id"]);
     }else{
       $this->user = Array("user_level" => 0);
