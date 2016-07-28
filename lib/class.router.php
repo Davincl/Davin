@@ -27,11 +27,9 @@ class Router {
     }
 
     $object = new $this->PATH["class"]();
-    if(method_exists($object, "__remap")){
-
+    if(method_exists($object, "__remap") && (strpos($_SERVER["HTTP_ACCEPT"], "javascript") === false)){
       call_user_func_array(array($object, "__remap"), array($this->PATH));
     }else{
-
       call_user_func(array($object, $this->PATH["fun"]));
     }
   }
